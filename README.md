@@ -1,2 +1,1 @@
-# async-fastapi-mongo
-Repository housing code for the Testdriven article.
+kiss webapp in python with FastAPI-jinja2-MongoDB
