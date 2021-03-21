@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mehari Consulting</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/colors.css">
+    <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
+</head>
+
+<body>
+<script href="public/scripts/client.js"></script>
+<script href="public/scripts/editor.js"></script>
+
+{% include "lateralPane.html" %}
+
+<div class="pageContainer" id="container">
+<h1>Les actualités du Mehari</h1>
+<hr>
+<br>
+
+{% for element in search_result: %}
+   <div onclick="window.open('{{baseURL}}type=article&id={{element.id}}')" id="{{element.id}}" class="newsRubrique ritecultureRubrique" name="thumb">
+     <img class='thumbImg' src="{{baseURL}}public/img/{{element.thumbail}}">
+     <b>{{element.title|truncate(40, True) }}</b>
+     <p>{{element.content|truncate(100, True)|striptags}}</p>
+   </div>
+{% else %}
+    <p>aucun article trouvé</p>
+{% endfor %}
+
+<br><br>
+
+{% if (index_articles_precedents >= 0): %}
+<button class="buttonLinkLeft">
+    <a href="http://mehari-consulting.com/type=news&index={{index_articles_precedents}}"><b>&nbsp;&lt;&nbsp;</b></a>
+</button>
+{% endif %}
+
+{% if (index_articles_suivants < count_articles): %}
+<button class="buttonLinkRight">
+  <a href="http://mehari-consulting.com/type=news&index={{index_articles_suivants}}"><b>&nbsp;&gt;&nbsp;</b></a>
+</button>
+{% endif %}
+</div>
+
+<br><br>
+
+</body>
+</html>

@@ -10,6 +10,7 @@ class ArticleSchema(BaseModel):
     typeIsArticle: bool = Field(...)
     categorie: str = Field(...)
     id: str = Field(...)
+    thumbail: str = Field(...)
 
 
 class UpdateArticleModel(BaseModel):
@@ -19,6 +20,7 @@ class UpdateArticleModel(BaseModel):
     typeIsArticle: Optional[bool]
     categorie: Optional[str]
     id: Optional[str]
+    thumbail: Optional[str]
 
 
 def response_model(data, message):

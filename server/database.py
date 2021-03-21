@@ -1,14 +1,11 @@
 import motor.motor_asyncio
 
 client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017")
-
 database = client.details
-
 articles_collection = database.get_collection("articles")
 
+
 # helpers
-
-
 def article_helper(article) -> dict:
     return {
         "id": str(article["id"]),
@@ -17,6 +14,7 @@ def article_helper(article) -> dict:
         "date": article["date"],
         "typeIsArticle": article["typeIsArticle"],
         "categorie": article["categorie"],
+        "thumbail": str(article["thumbail"])
     }
 
 
@@ -35,6 +33,14 @@ async def retrieve_articles(key: str, value):
         articles.append(article_helper(article))
     count_articles = await articles_collection.count_documents({key:value})
     return articles, index_articles_suivants, index_articles_precedents, count_articles
+
+
+# Retrieve all articles in the database
+async def retrieve_all_articles():
+    articles = []
+    async for article in articles_collection.find().sort('date', -1):
+        articles.append(article_helper(article))
+    return articles
 
 
 # Add a new article into to the database

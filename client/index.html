@@ -3,19 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Mehari Consulting</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
 </head>
 <body>
 
-<div id="vue">
-    article : {{article}}
-</div>
+{% extends "templates/lateralPane.html" %}
 
-<router-link to="/bar">Go to Bar</router-link>
+{% set absolute_request = request.url|string ~ name %}
+{% set relative_request = absolute_request.split("/")  %}
 
-<script src="script/vue.js"></script>
-<script src="script/vue-router.js"></script>
+{% set local_request = relative_request | last %}
+
+{% if local_request = "infos" : %}
+    {% extends "templates/news.html" %}
+
+{% if local_request = "login" : %}
+    {% extends "templates/login.html" %}
+
+{% if local_request = "admin" : %}
+    {% extends "templates/admin.html" %}
+
+{% if local_request = "upload" : %}
+    {% extends "templates/uploadImg.html" %}
+
+{% if local_request = "create" : %}
+    {% extends "templates/createArticle.html" %}
+
+{% if local_request = "type=article*" : %}
+    {% extends "templates/article.html" %}
+
+{% if local_request = "type=rubrique*" : %}
+    {% extends "templates/rubrique.html" %}
+
+editArticle
+
+
+{% else : %}
+    {% extends "templates/404.html" %}
+
 <script src="script/client.js"></script>
 <script src="script/editor.js"></script>
 
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+        {% endblock %}
+    </div>
 </body>
 </html>

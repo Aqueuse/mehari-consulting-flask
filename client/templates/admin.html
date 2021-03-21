@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mehari Consulting</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/colors.css">
+    <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
+</head>
+
+<body>
+<script href="public/scripts/client.js"></script>
+<script href="public/scripts/editor.js"></script>
+
+{% include "lateralPane.html" %}
+
+<div class="pageContainer" id="container">
+    <div class="topArea" align="right">
+        <a href="{{baseURL}}upload" class="button">Upload</a>
+        <a href="{{baseURL}}public/archive.tgz" class="button">Sauvegarder</a>
+        <a href="{{baseURL}}create" class="button">Créer un article</a>
+    </div>
+    <table class="adminTable">
+      {% for element in search_result : %}
+        <tr class="adminItems">
+          <td  class="adminItems">
+             <a href="{{baseURL}}type=article&id={{element.id}}">{{element.title}}</a>
+          </td>
+          <td  class="adminItems">
+              <button><a href="{{baseURL}}edit/{{element.id}}">edit</a></button>
+          </td>
+          <td class="adminItems">
+             <form action="/delete" method="post">
+                 <input type="submit" name="{{element.id}}" value="delete"></input>
+             </form>
+          </td>
+        </tr>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

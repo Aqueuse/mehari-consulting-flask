@@ -1,11 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mehari consulting</title>
+  <link rel="stylesheet" href= 'public/style.css'>
+  <link rel="stylesheet" href= 'public/colors.css'>
+  <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
+</head>
+
+<body>
+<script type="text/javascript" src="public/scripts/client.js"></script>
+<script type="text/javascript" src="public/scripts/editor.js"></script>
+
+{% include "lateralPane.html" %}
+
 <div class="pageContainer" id="container">
-     {% if (result.typeIsArticle == true) %}
+     {% if (result.title == "Bienvenue" or result.title == "Contact" or result.title == "Qui sommes nous ?" ) %}
+         {{result.content|safe}}
+     {% else %}
          <h1>{{ result.title }}</h1>
-             {{ result.content }}
+         {{ result.content|safe }}
              <script>insertSocialNetwork("{{result.id}}")</script>
              <script>insertDate("{{result.date}}")</script>
-     {% else %}
-             <h1>{{result.title}}</h1>
-             {{result.content}}
      {% endif %}
 </div>
+
+</body>
+</html>

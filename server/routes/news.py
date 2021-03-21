@@ -1,10 +1,9 @@
+import os
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
-from server.database import (
-    retrieve_articles
-)
+from server.database import retrieve_articles
 
 templates = Jinja2Templates(directory="client/templates")
 news_router = APIRouter()
@@ -19,5 +18,6 @@ async def get_articles(request: Request):
         "search_result": search_result,
         "index_articles_suivants": brut_result[1],
         "index_articles_precedents": brut_result[2],
-        "count_articles": brut_result[3]
+        "count_articles": brut_result[3],
+        "baseURL": os.environ['baseURL']
     })
