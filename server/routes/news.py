@@ -1,23 +1,42 @@
-import os
-from fastapi import APIRouter, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from flask import Blueprint, render_template
+from server import database as database
+from server import config
 
-from server.database import retrieve_articles
+baseURL = config.baseURL
 
-templates = Jinja2Templates(directory="client/templates")
-news_router = APIRouter()
+news_blueprint = Blueprint('news', __name__,)
 
 
-@news_router.get("/infos", response_class=HTMLResponse)
-async def get_articles(request: Request):
-    brut_result = await retrieve_articles(key="typeIsArticle", value=True)
-    search_result = brut_result[0]
-    return templates.TemplateResponse('news.html', {
-        "request": request,
-        "search_result": search_result,
-        "index_articles_suivants": brut_result[1],
-        "index_articles_precedents": brut_result[2],
-        "count_articles": brut_result[3],
-        "baseURL": os.environ['baseURL']
-    })
+@news_blueprint.route('/', methods=['GET'])
+@news_blueprint.route('/infos', methods=['GET'])
+def route_to_last_news():
+    slice_articles_index = 0
+    article_limit = 6
+
+    index_articles_precedents = slice_articles_index - article_limit
+    index_articles_suivants = slice_articles_index + article_limit
+    return render_template(
+        'news.html',
+        search_result=database.retrieve_news_by_chunck(0, 6),
+        count_articles=database.count_articles('typeIsArticle', True),
+        index_articles_precedents=index_articles_precedents,
+        index_articles_suivants=index_articles_suivants,
+        baseURL=baseURL
+    )
+
+
+@news_blueprint.route('/type=news&index=<index>', methods=['GET'])
+def route_to_news_by_index(index):
+    slice_articles_index = int(index)
+    article_limit = 6
+
+    index_articles_precedents = slice_articles_index - article_limit
+    index_articles_suivants = slice_articles_index + article_limit
+    return render_template(
+        'news.html',
+        search_result=database.retrieve_news_by_chunck(index, 6),
+        count_articles=database.count_articles('typeIsArticle', True),
+        index_articles_precedents=index_articles_precedents,
+        index_articles_suivants=index_articles_suivants,
+        baseURL=baseURL
+    )

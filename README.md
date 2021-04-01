@@ -1,1 +1,0 @@
-kiss webapp in python with FastAPI-jinja2-MongoDB

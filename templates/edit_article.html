@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mehari Consulting</title>
+    <link rel="stylesheet" href="{{baseURL}}public/style.css">
+    <link rel="stylesheet" href="{{baseURL}}public/colors.css">
+    <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
+</head>
+
+<body>
+<script src="{{baseURL}}public/scripts/client.js"></script>
+<script src="{{baseURL}}public/scripts/editor.js"></script>
+
+{% include "lateralPane.html" %}
+
+<div class="pageContainer" id="container">
+    <form method="post" onsubmit="logSubmit()" id="formEditArticle">
+        <span class="topArea">
+           <input type="text" class="titreArea" id="titreAreaId" name="title" value="{{result.title}}">
+           <input type="date" class="dateArea" name="date" value="{{result.date}}">
+        </span>
+        <textarea style="white-space: pre-wrap; overflow-wrap: break-word;" class="articleArea" id="articleAreaId" name="content">{{result.content}}</textarea>
+        <br>
+        <br>
+        <div align="right" class="bottomArea">
+            <input type="text" style="display:none;" name="typeIsArticle" value="{{result.typeIsArticle}}">
+            <input type="text" style="display:none;" name="categories" value="{{result.categorie}}">
+            <input type="text" style="display: none" name="thumbail" id="thumbailChooser" value="{{result.thumbail}}">
+            <input class="publishBtn" type="submit" value="Valider">
+        </div>
+    </form>
+</div>
+
+<script>
+    function logSubmit() {
+        copyImagesList();
+    }
+</script>
+
+</body>
+</html>

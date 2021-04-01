@@ -1,28 +1,25 @@
-import os
-from fastapi import APIRouter, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from flask import Blueprint, render_template
 
-from server.database import (
-    retrieve_articles
-)
-from server.models.article import (
-    response_model
-)
+from server import database as database
+from server import config
 
-templates = Jinja2Templates(directory="client/templates")
-rubrique_router = APIRouter()
+baseURL = config.baseURL
+rubrique_blueprint = Blueprint('rubrique', __name__,)
 
 
-@rubrique_router.get("/type=rubrique&name={name}", response_description="Article data retrieved", response_class=HTMLResponse)
-async def get_article_data(request: Request, name: str):
-    brut_result = await retrieve_articles(key="categorie", value=name)
-    search_result = brut_result[0]
-    return templates.TemplateResponse('rubrique.html', {
-        "request": request,
-        "search_result": search_result,
-        "index_articles_suivants": brut_result[1],
-        "index_articles_precedents": brut_result[2],
-        "count_articles": brut_result[3],
-        "baseURL": os.environ['baseURL']
-    })
+@rubrique_blueprint.route('/type=rubrique&name=<categorie_name>&index=<index>', methods=['GET'])
+def route_to_rubrique(categorie_name, index):
+    slice_articles_index = int(index)
+    article_limit = 6
+
+    index_articles_precedents = slice_articles_index - article_limit
+    index_articles_suivants = slice_articles_index + article_limit
+    return render_template(
+        'rubrique.html',
+        search_result=database.retrieve_rubrique_by_chunck(categorie_name, index, article_limit),
+        count_articles=database.count_articles('categorie', categorie_name),
+        index_articles_precedents=index_articles_precedents,
+        index_articles_suivants=index_articles_suivants,
+        baseURL=baseURL,
+        categorie_name=categorie_name
+    )

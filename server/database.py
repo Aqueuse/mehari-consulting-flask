@@ -1,80 +1,69 @@
-import motor.motor_asyncio
+import uuid
+from pymongo import MongoClient
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017")
-database = client.details
-articles_collection = database.get_collection("articles")
-
-
-# helpers
-def article_helper(article) -> dict:
-    return {
-        "id": str(article["id"]),
-        "title": article["title"],
-        "content": article["content"],
-        "date": article["date"],
-        "typeIsArticle": article["typeIsArticle"],
-        "categorie": article["categorie"],
-        "thumbail": str(article["thumbail"])
-    }
+client = MongoClient('mongodb://localhost:27017/')
+db = client.details
 
 
-# crud operations
-
-# Retrieve specific articles in the database
-async def retrieve_articles(key: str, value):
-    slice_articles_index = 0
-    article_limit = 6
-
-    index_articles_precedents = slice_articles_index - article_limit
-    index_articles_suivants = slice_articles_index + article_limit
-
-    articles = []
-    async for article in articles_collection.find({key: value}).sort('date', -1).skip(slice_articles_index).limit(6):
-        articles.append(article_helper(article))
-    count_articles = await articles_collection.count_documents({key:value})
-    return articles, index_articles_suivants, index_articles_precedents, count_articles
+def retrieve_article(id):
+    result = db.articles.find_one({'id': id}, {'_id': 0})
+    return result
 
 
-# Retrieve all articles in the database
-async def retrieve_all_articles():
-    articles = []
-    async for article in articles_collection.find().sort('date', -1):
-        articles.append(article_helper(article))
-    return articles
+def retrieve_news_by_chunck(index, limit):
+    result = list(
+        db.articles.find({'typeIsArticle': True}, {'_id': 0}).
+        sort('date', -1).
+        skip(int(index)).
+        limit(limit)
+    )
+    return result
 
 
-# Add a new article into to the database
-async def add_article(article_data: dict) -> dict:
-    article = await articles_collection.insert_one(article_data)
-    new_article = await articles_collection.find_one({"id": article.inserted_id})
-    return article_helper(new_article)
+def retrieve_rubrique_by_chunck(rubrique_name, index, limit):
+    result = list(
+        db.articles.find({'categorie': rubrique_name}, {'_id': 0}).
+        sort('date', -1).
+        skip(int(index)).
+        limit(limit)
+    )
+    return result
 
 
-# Retrieve an article with a matching ID
-async def retrieve_article(id: str) -> dict:
-    article = await articles_collection.find_one({"id": id})
-    if article:
-        return article_helper(article)
+def retrieve_titles_and_ids():
+    result = list(db.articles.find({}, {'title': 1, 'id': 1, '_id': 0}).sort('date', -1))
+    return result
 
 
-# Update an article with a matching ID
-async def update_article(id: str, data: dict):
-    # Return false if an empty request body is sent.
-    if len(data) < 1:
-        return False
-    article = await articles_collection.find_one({"id": id})
-    if article:
-        updated_article = await articles_collection.update_one(
-            {"id": id}, {"$set": data}
-        )
-        if updated_article:
-            return True
-        return False
+def count_articles(key, value):
+    return db.articles.count_documents({key: value})
 
 
-# Delete an article from the database
-async def delete_article(id: str):
-    article = await articles_collection.find_one({"id": id})
-    if article:
-        await articles_collection.delete_one({"id": id})
-        return True
+def add_article(data):
+    data['id'] = create_unique_id(data['title'])
+    db.articles.insert_one(data)
+
+
+def edit_article(id, data):
+    db.articles.update_one(
+        {'id': id},
+        {'$set': data}
+    )
+
+
+def remove_article(id):
+    db.articles.delete_one({'id': id})
+
+
+def create_unique_id(complicated_title):
+    key = "-" + uuid.uuid4().hex[:8]
+
+    short_title = complicated_title.lower()
+    array_title = short_title.split(" ")[:3]
+    clean_title = []
+
+    for word in array_title :
+        for char in word :
+            if char.isalnum():
+                clean_title.append(char)
+    return "".join(clean_title) + key

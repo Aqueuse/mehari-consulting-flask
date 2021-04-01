@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mehari Consulting</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="public/colors.css">
+</head>
+
+<body>
+<script src="{{baseURL}}public/scripts/client.js"></script>
+<script src="{{baseURL}}public/scripts/editor.js"></script>
+
+{% include "lateralPane.html" %}
+
+<div class="pageContainer" id="container">
+    <form action="/create" method="post" onsubmit="logSubmit()" id="formCreateArticle">
+        <span class="topArea" align="right">
+            <input type="text" class="titreArea" id="titreAreaId" name="title" placeholder="Titre de l'article">
+            <input type="date" class="dateArea" name="date" id="publicationDate" value="2020-01-01">
+        </span>
+        <textarea class="articleArea" id="articleAreaId" name="content"></textarea>
+        <br>
+        <br>
+        <div class="bottomArea" align="right">
+            <input type="text" name="categorie" placeholder="cat&eacute;gorie"/>
+            &nbsp;<label> actualité ?</label>
+            <input type="checkbox" name="typeIsArticle" value="true" checked/>
+            <input type="submit" value="Publier"/>
+        </div>
+    </form>
+</div>
+
+<script>
+    function logSubmit() {
+        copyImagesList();
+        document.getElementById("publicationDate").defaultValue = new Date().toISOString().substr(0, 10);
+    }
+</script>
+
+</body>
+</html>
