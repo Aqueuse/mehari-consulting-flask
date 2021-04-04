@@ -42,6 +42,7 @@ def create_article():
             # we add the array of images associated with this article on the db
             data['image'] = request.form.to_dict(flat=False)['image']
             database.add_article(data)
+            database.populate_archive_folder()
             return redirect(baseURL+'type=article&id='+data['id'])
     else:
         return redirect(baseURL)
@@ -61,6 +62,7 @@ def edit_article(id):
             data['image'] = request.form.to_dict(flat=False)['image']
             data['id'] = id
             database.edit_article(id, data)
+            database.populate_archive_folder()
             return render_template(
                 'edit_article.html',
                 result=database.retrieve_article(id)

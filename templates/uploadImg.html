@@ -9,25 +9,47 @@
 </head>
 
 <body>
-<script type="text/javascript" src="public/scripts/client.js"></script>
-<script type="text/javascript" src="public/scripts/editor.js"></script>
+<script src="{{baseURL}}public/scripts/client.js"></script>
+<script src="{{baseURL}}public/scripts/editor.js"></script>
 
 {% include "lateralPane.html" %}
 
 <div class="pageContainer" id="container">
     <div class="toolsPanel">
-        <form method="POST" action="/upload" enctype="multipart/form-data">
+        <form method="POST" action=/upload&index={{index}} enctype="multipart/form-data">
             <input type="file" name="newImg" id="inputImg" accept="image/*">
             <input type="submit" name="uploadImg" value="Upload"/>
         </form>&nbsp;
     </div>
 
     <div class="imgPanel">
-      {% for element in img_files: %}
-        <img style='width:10%;' src='{{baseURL}}public/img/{{element}}'/>
-      {% endfor %}
+        <bouton id="img_unused_btn" style="background-color:gray" onclick="switchPane('img_unused')">images orphelines</bouton>
+        <bouton id="img_by_article_btn" style="background-color:lightgray" onclick="switchPane('img_by_article')">images par article</bouton>
+        <div id='img_unused' style="display: block; background-color: gray">
+            <table>
+              {% for element in img_unused: %}
+                <tr>
+                    <td>
+                        <img style='width:10%;' src='{{baseURL}}public/img/{{element}}'/>
+                        <a href="{{baseURL}}public/img/{{element}}">{{baseURL}}public/img/{{element}}</a>
+                    </td>
+                </tr>
+              {% endfor %}
+            </table>
+        </div>
+        <div id='img_by_article' style="display: none; background-color: lightgray">
+            <table>
+              {% for element in img_files: %}
+                <tr>
+                    <td>
+                       <img style='width:10%;' src='{{baseURL}}public/img/{{element}}'/>
+                       <a href="{{baseURL}}public/img/{{element}}">{{baseURL}}public/img/{{element}}</a>
+                    </td>
+                </tr>
+              {% endfor %}
+            </table>
+        </div>
     </div>
 </div>
-
 </body>
 </html>

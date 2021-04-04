@@ -18,7 +18,7 @@ def route_to_last_news():
     return render_template(
         'news.html',
         search_result=database.retrieve_news_by_chunck(0, 6),
-        count_articles=database.count_articles('typeIsArticle', True),
+        count_articles=database.count_news(),
         index_articles_precedents=index_articles_precedents,
         index_articles_suivants=index_articles_suivants,
         baseURL=baseURL
@@ -35,7 +35,7 @@ def route_to_news_by_index(index):
     return render_template(
         'news.html',
         search_result=database.retrieve_news_by_chunck(index, 6),
-        count_articles=database.count_articles('typeIsArticle', True),
+        count_articles=database.count_news(),
         index_articles_precedents=index_articles_precedents,
         index_articles_suivants=index_articles_suivants,
         baseURL=baseURL

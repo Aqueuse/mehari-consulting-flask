@@ -50,3 +50,22 @@ function copyImagesList() {
         });
     }
 }
+
+function switchPane(paneID) {
+    if (paneID == 'img_unused') {
+        document.getElementById('img_unused').style.display = "block";
+        document.getElementById('img_unused').style.backgroundColor = "gray";
+        document.getElementById('img_unused_btn').style.backgroundColor = "gray";
+
+        document.getElementById('img_by_article').style.display = "none";
+        document.getElementById('img_by_article_btn').style.backgroundColor = "lightgray";
+    }
+    if (paneID == 'img_by_article') {
+        document.getElementById('img_by_article').style.display = "block";
+        document.getElementById('img_by_article').style.backgroundColor = "gray";
+        document.getElementById('img_by_article_btn').style.backgroundColor = "gray";
+
+        document.getElementById('img_unused').style.display = "none";
+        document.getElementById('img_unused_btn').style.backgroundColor = "lightgray";
+    }
+}
