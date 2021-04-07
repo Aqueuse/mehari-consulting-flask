@@ -1,0 +1,87 @@
+/* the head */
+.head {
+  background-color: #41406d;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.head > h1 {
+  color: #F3A536;
+}
+
+/* The navigation menu */
+.navbar {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #41406d;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: #f19717;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-bottom: 5px solid DeepSkyBlue;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #f3a536;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  border-bottom: 5px solid DeepSkyBlue;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #5F5D9D;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0.6%;
+  padding-left: 1px;
+  background-color: #41406d;
+  width: 98.7%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: #f3a536;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: flex;
+  justify-content: center;
+}

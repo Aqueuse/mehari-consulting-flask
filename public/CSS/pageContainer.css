@@ -1,65 +1,10 @@
-.bouton-global {
-  z-index: 2;
-  position: fixed;
-  top: 1%;
-  left: 20%;
-}
-
-.bouton-bar {
-  width: 35px;
-  height: 5px;
-  margin: 6px 2px;
-}
-
-.lateralPane {
-  position: fixed;
-  left: 0px;
-  top: 0%;
-  width: 20%;
-  height: 100%;
-  border-right: 1px solid DeepSkyBlue;
-  padding-top: 0;
-  visibility: visible;
-  z-index: 1;
-  overflow-y: auto;
-}
-
-.paneTable {
-  position: absolute;
-  top: 1%;
-  left: 1%;
-  width: 95%;
-}
-
-.paneLink {
-  cursor: pointer;
-  border-style: initial;
-  border-left: 6px solid #00bfff;
-  padding-bottom: 1%;
-  margin-bottom: 0.5%;
-  padding-left:0.1%;
-}
-
-.paneA {
-  text-decoration:none;
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: large;
-}
-
 .pageContainer {
-  overflow-y: scroll;
-  width: 80%;
-  position: fixed;
-  right: 0.1%;
-  top: 0%;
-  height: 100%;
+  padding-top: 10px;
 }
 
 .divSocialNetwork {
-  position: absolute;
-  top: 0%;
-  right: 4%;
-  padding: 0.3%;
+  float: right;
+  position: relative;
 }
 
 .divSocialNetwork > img {
@@ -80,6 +25,7 @@
   padding: 1%;
   text-decoration: none;
   border: 2px ridge gray;
+  background-color: gainsboro;
 }
 
 .adminTable {
@@ -89,7 +35,8 @@
   right:2%;
   height: fit-content;
   border : 1px solid black;
-  border-spacing: 0px;
+  border-spacing: 0;
+  background-color: ghostwhite;
 }
 
 .adminItems {
@@ -104,7 +51,7 @@
   width:100%;
   height:100%;
   top:10%;
-  left:0%;
+  left:0;
 }
 
 .toolsPanel {
@@ -113,6 +60,7 @@
   width:100%;
   height:5%;
   top: 2%;
+  background-color:silver;
 }
 
 .topArea {
@@ -147,9 +95,16 @@
 
 /* article text styling */
 
+.mehari-img {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .dateArticle {
  text-align:right;
  font-family: Arial, Helvetica, sans-serif;
+ color:#41406D;
 }
 
 b {
@@ -161,6 +116,7 @@ p, li {
  padding-right: 5%;
  font-family: Arial, Helvetica, sans-serif;
  text-align: justify;
+ color:#41406D;
 }
 
 p:first-of-type {
@@ -170,23 +126,27 @@ p:first-of-type {
 h1 {
  text-align:center;
  font-family: Arial, Helvetica, sans-serif;
+ color:#41406D;
 }
 
 h2 {
  text-align:center;
  font-family: Arial, Helvetica, sans-serif;
+ color:#41406D;
 }
 
 h3 {
  padding-left: 5%;
  padding-right: 5%;
  font-family: Arial, Helvetica, sans-serif;
+ color:#41406D;
 }
 
 hr {
   width:10%; 
   height:1%;
   border-width:0;
+  background-color:#F3A536;
 }
 
 /* images styling */
@@ -209,9 +169,12 @@ figcaption {
   padding-left: 5%;
   padding-right: 5%;
   font-family: Arial, Helvetica, sans-serif;
+  color:#41406D;
 }
 
-/* preview (thumb) style */
+/* ------- rubriques dedicated classes -----------  */
+ /* --------- preview (thumb) style ------------ */
+
 .newsRubrique {
   display: inline-block;
   margin: 0.2%;
@@ -219,12 +182,20 @@ figcaption {
   width: 15%;
   height: fit-content;
   cursor: pointer;
+  color: #F3A536;
+  background-color: #41406D;
 }
 
  .newsRubrique > p {
    text-align:left; 
    padding:0; 
+   color:white;
  }
+
+.ritecultureRubrique {
+  background-color: #66C4B2;
+  color: #6F2645;
+}
 
 .thumbImg {
   width: 100%;
@@ -235,8 +206,6 @@ figcaption {
 
 .buttonLinkLeft {
   cursor: pointer;
-  position: absolute;
-  left: 1%;
 }
 
 .buttonLinkLeft > a {
@@ -246,8 +215,6 @@ figcaption {
 
 .buttonLinkRight {
   cursor: pointer;
-  position: absolute;
-  right: 1%;
 }
 
 .buttonLinkRight > a {
@@ -264,6 +231,11 @@ figcaption {
 
 /* mobile devices */
 @media only screen and (max-width: 768px) {
+ .mehari-img {
+   display:flex;
+   flex-direction: column;
+ }
+
   p, a, li, ul {
    font-size:16px;
   }
@@ -286,6 +258,8 @@ figcaption {
    width: 100%;
    height: auto;
    cursor: pointer;
+    color: #F3A536;
+    background-color: #41406D;
  }
 
  .newsRubrique > p {
@@ -293,23 +267,15 @@ figcaption {
    padding:0; 
  }
 
+ .ritecultureRubrique {
+  background-color: #66C4B2;
+  color: #6F2645;
+}
+
  .thumbImg {
    width: 100%;
    height: auto;
  }
-
- .lateralPane {
-   position: relative;
-   left: 0px;
-   top: 0%;
-   width: 100%;
-   height: max-content;
-   border-right: 1px solid DeepSkyBlue;
-   padding-top: 0;
-   visibility: visible;
-   z-index: 1;
-   overflow-y: auto;
-}
 
 .pageContainer {
   overflow-y: scroll;
@@ -329,8 +295,7 @@ figcaption {
 
   .buttonLinkLeft {
     cursor: pointer;
-    position: absolute;
-    left: 1%;
+    alignment: left;
   }
 
   .buttonLinkLeft > a {
@@ -340,8 +305,7 @@ figcaption {
 
   .buttonLinkRight {
     cursor: pointer;
-    position: absolute;
-    right: 1%;
+    alignment: right;
   }
 
   .buttonLinkRight > a {

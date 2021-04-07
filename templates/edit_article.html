@@ -1,17 +1,6 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mehari Consulting</title>
-    <link rel="stylesheet" href="{{baseURL}}public/style.css">
-    <link rel="stylesheet" href="{{baseURL}}public/colors.css">
-    <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
-</head>
+{% include "head.html" %}
 
-<body>
-<script src="{{baseURL}}public/scripts/client.js"></script>
-<script src="{{baseURL}}public/scripts/editor.js"></script>
-
-{% include "lateralPane.html" %}
+{% include "upPane.html" %}
 
 <div class="pageContainer" id="container">
     <form method="post" onsubmit="logSubmit()" id="formEditArticle">
@@ -37,5 +26,4 @@
     }
 </script>
 
-</body>
-</html>
+{% include "foot.html" %}

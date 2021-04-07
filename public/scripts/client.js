@@ -75,8 +75,8 @@ function insertSocialNetwork(elementId) {
     "http://mehari-consulting.com/"+elementId+'")');
     divSocialNetwork.appendChild(twitterImg);
 
-    document.getElementsByTagName('H1')[0].before(spacerSocialNetwork);
-    document.getElementsByTagName('H1')[0].before(divSocialNetwork);
+    document.querySelector(".pageContainer").prepend(spacerSocialNetwork);
+    document.querySelector(".pageContainer").prepend(divSocialNetwork);
 }
 
 function copyClipboard() {

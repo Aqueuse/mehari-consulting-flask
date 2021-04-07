@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mehari Consulting</title>
-    <link rel="stylesheet" href="public/style.css">
-    <link rel="stylesheet" href="public/colors.css">
-    <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
-</head>
+{% include "head.html" %}
 
-<body>
-
-{% include "lateralPane.html" %}
+{% include "upPane.html" %}
 
 <div class="pageContainer" id="container">
     <form action="/login" method="post" id="formLogin">
@@ -28,5 +18,4 @@
     </form>
 </div>
 
-</body>
-</html>
+{% include "foot.html" %}

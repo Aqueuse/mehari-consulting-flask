@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mehari Consulting</title>
-    <link rel="stylesheet" href="public/style.css">
-    <link rel="stylesheet" href="public/colors.css">
-</head>
+{% include "head.html" %}
 
-<body>
-<script src="{{baseURL}}public/scripts/client.js"></script>
-<script src="{{baseURL}}public/scripts/editor.js"></script>
-
-{% include "lateralPane.html" %}
+{% include "upPane.html" %}
 
 <div class="pageContainer" id="container">
     <form action="/create" method="post" onsubmit="logSubmit()" id="formCreateArticle">
@@ -38,5 +27,4 @@
     }
 </script>
 
-</body>
-</html>
+{% include "foot.html" %}

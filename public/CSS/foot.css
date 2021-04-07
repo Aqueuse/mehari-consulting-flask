@@ -1,0 +1,10 @@
+.foot {
+    display: flex;
+    align-content: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #41406D;
+    color: #F3A536;
+}

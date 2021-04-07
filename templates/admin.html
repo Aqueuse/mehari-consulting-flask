@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mehari Consulting</title>
-    <link rel="stylesheet" href="public/style.css">
-    <link rel="stylesheet" href="public/colors.css">
-    <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
-</head>
+{% include "head.html" %}
 
-<body>
-<script href="public/scripts/client.js"></script>
-<script href="public/scripts/editor.js"></script>
-
-{% include "lateralPane.html" %}
+{% include "upPane.html" %}
 
 <div class="pageContainer" id="container">
     <div class="topArea" align="right">
@@ -37,5 +25,4 @@
   </table>
 </div>
 
-</body>
-</html>
+{% include "foot.html" %}

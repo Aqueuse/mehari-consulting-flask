@@ -1,29 +1,21 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mehari consulting</title>
-  <link rel="stylesheet" href= 'public/style.css'>
-  <link rel="stylesheet" href= 'public/colors.css'>
-  <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
-</head>
+{% include "head.html" %}
 
-<body>
-<script type="text/javascript" src="public/scripts/client.js"></script>
-<script type="text/javascript" src="public/scripts/editor.js"></script>
-
-{% include "lateralPane.html" %}
+{% include "upPane.html" %}
 
 <div class="pageContainer" id="container">
      {% if (result.title == "Bienvenue" or result.title == "Contact" or result.title == "Qui sommes nous ?" ) %}
          {{result.content|safe}}
      {% else %}
-         <h1>{{ result.title }}</h1>
+        <div class="mehari-img">
+            <img src="{{baseURL}}public/img/mehari-cover.jpg" width="30%;" height="auto">
+            <span>
+                 <h1 style="padding-top: 10%">{{ result.title }}</h1>
+            </span>
+        </div>
          {{ result.content|safe }}
              <script>insertSocialNetwork("{{result.id}}")</script>
              <script>insertDate("{{result.date}}")</script>
      {% endif %}
 </div>
 
-</body>
-</html>
+{% include "foot.html" %}

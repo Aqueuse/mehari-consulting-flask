@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 from server import database as database
 from server import config
 
@@ -8,6 +8,10 @@ news_blueprint = Blueprint('news', __name__,)
 
 
 @news_blueprint.route('/', methods=['GET'])
+def redirect_to_info():
+    return redirect(baseURL+'infos')
+
+
 @news_blueprint.route('/infos', methods=['GET'])
 def route_to_last_news():
     slice_articles_index = 0
