@@ -25,6 +25,8 @@ def retrieve_news_by_chunck(index, limit):
         skip(int(index)).
         limit(limit)
     )
+    for element in result:
+        element['content'] = remove_author_name(element['content'])
     return result
 
 
@@ -35,6 +37,8 @@ def retrieve_rubrique_by_chunck(rubrique_name, index, limit):
         skip(int(index)).
         limit(limit)
     )
+    for element in result:
+        element['content'] = remove_author_name(element['content'])
     return result
 
 
@@ -129,3 +133,7 @@ def create_archive():
         tar.add('archive', 'archive')
         tar.add('public/img', 'img')
     tar.close()
+
+
+def remove_author_name(text):
+    return text[:text.find("<p>")] + text[text.find("</p>") + len('<p>')+3:]

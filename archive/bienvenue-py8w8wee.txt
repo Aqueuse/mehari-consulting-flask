@@ -18,11 +18,9 @@ default
 <h1 style="text-align:center; color:#41406D;">Une jeunesse ouverte et créative pour le grand Maliba et l'Afrique</h1>
 <hr style="width:10%; background-color:#F3A536; height:2px;border-width:0;">
 <p style="color:#41406D; text-align:left;">
-Le Mehari Consulting est une société qui propose des services en conseils et formation
+Le Méhari Consulting est une société qui propose des services en conseils et formation
  dans plusieurs domaines pour faciliter la paix sociale entre les populations elles
-  mêmes ainsi qu'entre celles-ci et les décideurs nationaux et internationaux. Le Mehari
-   de son nom un chameau ou dromadaire qui fréquente plusieurs localités afin de retrouver
-    la paix et les bons pâturages.
+  mêmes ainsi qu'entre celles-ci et les décideurs nationaux et internationaux. Le Mehari est un chameau qui sert à faire des expéditions touristiques dans plusieurs localités intéressantes à visiter. En d'autres termes les méharées. Le Mehari dans ce contexte se veut être un artisan de la consolidation de paix et de cohésion sociale au Mali et ailleurs à travers ses expertises.
 </p>
 <br>
 <br>
@@ -80,7 +78,7 @@ Le Mehari Consulting est une société qui propose des services en conseils et f
         Une nouvelle société d'information et de consultation générale qui vise à promouvoir la qualité de ses services en conseils et formations dans plusieurs domaines. Cela consiste à faciliter la paix sociale entre les populations elles-mêmes ainsi qu'entre celles-ci et les décideurs nationaux ou internationaux.
     </p>
     <p style="padding-left: 5%; padding-right: 5%; color:#41406D;">
-        De façon historique, Mehari qui signifie ( un chameau ou dromadaire qui fréquente plusieurs localités afin de retrouver la paix et les bons pâturages) a été lancé  depuis février 2019 à Bamako afin de consolider la paix, l'unite nationale, la réconciliation, la connaissance réciproque des cultures, l'éducation, l'entreprenariat et ainsi que l'innovation et le développement au Mali.
+        De façon historique, Mehari a été lancé  depuis février 2019 à Bamako afin de consolider la paix, l'unite nationale, la réconciliation, la connaissance réciproque des cultures, l'éducation, l'entreprenariat et ainsi que l'innovation et le développement au Mali.
     </p>
     <p style="padding-left: 5%; padding-right: 5%; color:#41406D;">
         Aujourd'hui, cette société "Mehari consulting"  se met à la disposition des maliens de l'interieur comme de la diaspora afin de les aider et les accompagner dans leurs entreprises. C'est une boîte de référence qui s'ouvre à tous les entrepreneurs afin de promouvoir à des bons résultats ou à la réussite de leurs projets.
