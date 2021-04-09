@@ -41,6 +41,8 @@ def create_article():
             data = request.form.to_dict(flat=True)
             # we add the array of images associated with this article on the db
             data['image'] = request.form.to_dict(flat=False)['image']
+            if 'typeIsArticle' not in data:
+                data['typeIsArticle'] = False
             database.add_article(data)
             database.populate_archive_folder()
             return redirect(baseURL+'type=article&id='+data['id'])

@@ -34,7 +34,6 @@ def upload(index):
             return redirect(baseURL)
     if request.method == 'POST':
         if request.cookies.get('userID') == secret:
-            print(request.form.to_dict(flat=True))
             current_date = datetime.now()
             current_full_date = current_date.strftime("%S%M%H%d%m%Y")
             file = request.files['newImg']

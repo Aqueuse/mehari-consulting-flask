@@ -1,6 +1,9 @@
-from flask import Blueprint, render_template, redirect
+import datetime
+import os
+from flask import Blueprint, render_template, redirect, request
 from server import database as database
 from server import config
+from server import files
 
 baseURL = config.baseURL
 
@@ -16,7 +19,6 @@ def redirect_to_info():
 def route_to_last_news():
     slice_articles_index = 0
     article_limit = 6
-
     index_articles_precedents = slice_articles_index - article_limit
     index_articles_suivants = slice_articles_index + article_limit
     return render_template(
@@ -33,7 +35,6 @@ def route_to_last_news():
 def route_to_news_by_index(index):
     slice_articles_index = int(index)
     article_limit = 6
-
     index_articles_precedents = slice_articles_index - article_limit
     index_articles_suivants = slice_articles_index + article_limit
     return render_template(

@@ -1,7 +1,5 @@
 {% include "head.html" %}
 
-{% include "upPane.html" %}
-
 <div class="pageContainer" id="container">
     <div class="toolsPanel">
         <form method="POST" action=/upload&index={{index}} enctype="multipart/form-data">
@@ -9,7 +7,8 @@
             <input type="submit" name="uploadImg" value="Upload"/>
         </form>&nbsp;
     </div>
-
+    <br>
+    <br>
     <div class="imgPanel">
         <bouton id="img_unused_btn" style="background-color:gray" onclick="switchPane('img_unused')">images orphelines</bouton>
         <bouton id="img_by_article_btn" style="background-color:lightgray" onclick="switchPane('img_by_article')">images par article</bouton>

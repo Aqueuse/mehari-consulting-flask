@@ -1,14 +1,12 @@
 {% include "head.html" %}
 
-{% include "upPane.html" %}
-
 <div class="pageContainer" id="container">
     <form action="/create" method="post" onsubmit="logSubmit()" id="formCreateArticle">
         <span class="topArea" align="right">
             <input type="text" class="titreArea" id="titreAreaId" name="title" placeholder="Titre de l'article">
             <input type="date" class="dateArea" name="date" id="publicationDate" value="2020-01-01">
         </span>
-        <textarea class="articleArea" id="articleAreaId" name="content"></textarea>
+        <textarea class="articleArea" id="articleAreaId" name="content" rows="40" cols="130"></textarea>
         <br>
         <br>
         <div class="bottomArea" align="right">

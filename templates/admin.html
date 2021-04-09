@@ -1,13 +1,12 @@
 {% include "head.html" %}
 
-{% include "upPane.html" %}
-
 <div class="pageContainer" id="container">
     <div class="topArea" align="right">
         <a href="{{baseURL}}upload" class="button">Upload</a>
-        <a href="{{baseURL}}public/archive.tgz" class="button">Sauvegarder</a>
+        <a href="{{baseURL}}public/img/archive.tgz" class="button">Sauvegarder</a>
         <a href="{{baseURL}}create" class="button">Créer un article</a>
     </div>
+    <br>
     <table class="adminTable">
       {% for element in search_result : %}
         <tr class="adminItems">
