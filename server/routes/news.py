@@ -12,6 +12,23 @@ news_blueprint = Blueprint('news', __name__,)
 
 @news_blueprint.route('/', methods=['GET'])
 def redirect_to_info():
+    ip_adress = request.remote_addr
+    date = datetime.datetime.now()
+    minutes = str(date.minute).zfill(2)
+    hours = str(date.hour).zfill(2)
+    day = str(date.day).zfill(2)
+    month = str(datetime.date.today().month).zfill(2)
+    year = str(datetime.date.today().year)
+    fulldate = minutes+hours+day+month+year
+
+    if files.month_exist(month):
+        stats_file = open('logs/' + month + year + '.log', 'a')
+        stats_file.write(ip_adress + ', ' + request.url + ', ' + fulldate + '\n')
+        stats_file.close()
+    else:
+        stats_file = open('logs/' + month + year + '.log', 'x')
+        stats_file.write(ip_adress + ', ' + request.url + ', ' + fulldate + '\n')
+        stats_file.close()
     return redirect(baseURL+'infos')
 
 

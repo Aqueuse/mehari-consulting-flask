@@ -36,49 +36,6 @@ function removeHTMLBalises() {
     });
 }
 
-function insertSocialNetwork(elementId) {
-    var divSocialNetwork = document.createElement('div');
-    divSocialNetwork.setAttribute('class','divSocialNetwork');
-    divSocialNetwork.setAttribute('align','right');
-
-    var spacerSocialNetwork = document.createElement('br');
-
-    var linkedinImg = document.createElement('img');
-    linkedinImg.setAttribute('src', 'http://mehari-consulting.com/public/img/icons/linkedin.png');
-    linkedinImg.setAttribute('align', 'right');
-    linkedinImg.setAttribute('height', '20px');
-    linkedinImg.setAttribute('width', 'auto');
-    linkedinImg.setAttribute('onclick', 'window.open("https://www.linkedin.com/sharing/share-offsite/?url='+
-    "http://mehari-consulting.com/"+elementId+'")');
-    divSocialNetwork.appendChild(linkedinImg);
-
-/*    var copyImg = document.createElement('img');
-    copyImg.setAttribute('src', 'http://mehari-consulting.com/public/img/icons/copy.png');
-    copyImg.setAttribute('height', '20px');
-    copyImg.setAttribute('width', 'auto');
-    copyImg.setAttribute('id','copyImg');
-    copyImg.setAttribute('onclick', 'copyClipboard()');
-    divSocialNetwork.appendChild(copyImg); */
-
-    var facebookImg = document.createElement('img');
-    facebookImg.setAttribute('src', 'http://mehari-consulting.com/public/img/icons/facebook.png');
-    facebookImg.setAttribute('height', '20px');
-    facebookImg.setAttribute('width', 'auto');
-    facebookImg.setAttribute('onclick', 'window.open("https://www.facebook.com/sharer/sharer.php?u=http://mehari-consulting.com/'+elementId+'")');
-    divSocialNetwork.appendChild(facebookImg);
-
-    var twitterImg = document.createElement('img');
-    twitterImg.setAttribute('src', 'http://mehari-consulting.com/public/img/icons/twitter.png');
-    twitterImg.setAttribute('height', '20px');
-    twitterImg.setAttribute('width', 'auto');
-    twitterImg.setAttribute('onclick', 'window.open("https://twitter.com/intent/tweet?url='+
-    "http://mehari-consulting.com/"+elementId+'")');
-    divSocialNetwork.appendChild(twitterImg);
-
-    document.querySelector(".pageContainer").prepend(spacerSocialNetwork);
-    document.querySelector(".pageContainer").prepend(divSocialNetwork);
-}
-
 function copyClipboard() {
     console.log(window.isSecureContent);
     navigator.clipboard.writeText(window.location.href);

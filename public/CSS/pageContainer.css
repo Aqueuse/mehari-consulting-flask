@@ -1,3 +1,8 @@
+iframe {
+  display: block;
+  margin: auto;
+}
+
 .pageContainer {
   padding-top: 10px;
 }

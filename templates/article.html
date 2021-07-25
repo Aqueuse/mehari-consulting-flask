@@ -1,4 +1,21 @@
-{% include "head.html" %}
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="{{result.title}}" property="og:title" />
+  <meta content="{{result.content | truncate(120)}}" property="og:description" />
+  <meta content="{{baseURL}}type=article&id={{result.id}}" property="og:url" />
+  <meta content="{{baseURL}}public/img/{{result.thumbail}}" property="og:image" />
+  <title>Mehari consulting</title>
+  <link href= 'public/CSS/navigation.css' rel="stylesheet">
+  <link href= 'public/CSS/pageContainer.css' rel="stylesheet">
+  <link href= 'public/CSS/foot.css' rel="stylesheet">
+  <link href="public/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+</head>
+
+<body>
+<script src="public/scripts/client.js" type="text/javascript"></script>
+<script src="public/scripts/editor.js" type="text/javascript"></script>
 
 {% include "upPane.html" %}
 
@@ -7,14 +24,26 @@
          {{result.content|safe}}
      {% else %}
         <div class="mehari-img">
-            <img src="{{baseURL}}public/img/mehari-cover.jpg" width="30%;" height="auto">
+            <img height="auto" alt="mehari cover" src="{{baseURL}}public/img/mehari-cover.jpg" width="30%;">
             <span>
-                 <h1 style="padding-top: 10%">{{ result.title }}</h1>
-            </span>
-        </div>
-         {{ result.content|safe }}
-             <script>insertSocialNetwork("{{result.id}}")</script>
-             <script>insertDate("{{result.date}}")</script>
+                <div style="display: flex; flex-direction: row; justify-content: flex-end">
+                    <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fmehari-consulting.com%2Ftype%3Darticle%26id%3D{{result.id | urlencode}}">
+                       <img alt="partage facebook" height="25px" src="https://mehari-consulting.com/public/img/icons/facebook.png" width="auto">
+                    </a>
+                    &nbsp;
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmehari-consulting.com%2Ftype%3Darticle%26id%3D{{result.id | urlencode}}">
+                        <img alt="partage linkedin" height="25px" src="https://mehari-consulting.com/public/img/icons/linkedin.png"  width="auto">
+                    </a>
+                    &nbsp;
+                    <a href="https://twitter.com/intent/tweet?url={{baseURL}}type=article%26id={{result.id}}">
+                        <img alt="partage twitter" height="25px" src="https://mehari-consulting.com/public/img/icons/twitter.png"  width="auto">
+                    </a>
+                </div>
+            <h1 style="padding-top: 10%">{{ result.title }}</h1>
+        </span>
+      </div>
+    {{ result.content|safe }}
+         <script>insertDate("{{result.date}}")</script>
      {% endif %}
 </div>
 

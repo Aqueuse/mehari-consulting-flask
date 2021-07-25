@@ -62,6 +62,7 @@ def add_article(data):
 
 
 def edit_article(id, data):
+    data['thumbail'] = data['image'][0]
     db.articles.update_one(
         {'id': id},
         {'$set': data}

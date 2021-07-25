@@ -25,3 +25,11 @@ def get_img_count(path):
         if element.endswith('.jpg'):
             img_list.append(element)
     return len(img_list)
+
+
+def month_exist(month):
+    files_list = os.listdir('logs/')
+    for element in files_list:
+        if month == element[0:2]:
+            return True
+    return False
